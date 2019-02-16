@@ -1,4 +1,5 @@
-# A JUnit 5 demo
+# 5 Reasons to Switch to JUnit 5
+*Richmond Java Users Group, June 2018*
 
 ## Instructions
 
@@ -24,17 +25,17 @@ Even though it bears many similarities to JUnit 4, the new version of JUnit is n
 
 ### Architecture
 - JUnit Platform
-  – `junit-platform-launcher`
+  * `junit-platform-launcher`
     - Foundational APIs used by IDEs and build tools to launch a testing framework
-  – `junit-platform-engine`
+  * `junit-platform-engine`
     - APIs for integration of any testing framework
 - JUnit Jupiter
-  – `junit-jupiter-api`
+  * `junit-jupiter-api`
     - APIs for the new programming model and extension model
-  – `junit-jupiter-engine`
+  * `junit-jupiter-engine`
     - To discover and execute Jupiter tests
 - JUnit Vintage
-  – `junit-vintage-engine`
+  * `junit-vintage-engine`
     - To discover and execute JUnit 3 and 4 tests
 
 ### JUnit 5 provides new ways to …
