@@ -10,17 +10,17 @@ Even though it bears many similarities to JUnit 4, the new version of JUnit is n
 
 ## Presentation
 
-### Why a new version of junit?
+### Why a new version of JUnit?
 - Modern
-  – Expectations around testing have advanced in last decade
-  – Support for Java 8 (and beyond)
+  * Expectations around testing have advanced in last decade
+  * Support for Java 8 (and beyond)
 - Modular
-  – No more single fat JAR
-  – Separation of concerns – discovery versus execution
-  – Maintainability
+  * No more single fat JAR
+  * Separation of concerns – discovery versus execution
+  * Maintainability
 - Extensible
-  – Easier to customize
-  – Open up for innovation
+  * Easier to customize
+  * Open up for innovation
 
 ### Architecture
 - JUnit Platform
@@ -37,30 +37,25 @@ Even though it bears many similarities to JUnit 4, the new version of JUnit is n
   – `junit-vintage-engine`
     - To discover and execute JUnit 3 and 4 tests
 
-### JUnit 5 provides new ways to …    
-- Report output of tests
-- Use Java 8 features
-- Structure tests
-- Write cleaner tests
-- Execute tests    
-
-### Report output of tests    
+### JUnit 5 provides new ways to …
+   
+#### Report output of tests    
 - Display Names - `@DisplayName`
 
-### Use Java 8 features    
+#### Use Java 8 features    
 - AssertAll
 - AssertThrows
 - Optional Message position
 
-### Structure tests    
+#### Structure tests    
 - Nested Test Classes - `@Nested`
 - `@BeforeAll, @BeforeEach, @AfterEach, @AfterAll`
 - Tags - `@Tag`
 
-### Write cleaner tests 
+#### Write cleaner tests 
 - Repeated Tests - `@RepeatedTest, RepetitionInfo`
 - Parameterized Tests - `@ParameterizedTest, @ValueSource, @EnumSource, @CsvFileSource, @MethodSource`
 
-### Execute tests 
+#### Execute tests 
 - Tooling - IDE, console runner, Maven/Gradle/Ant
 - JUnit 4 support
