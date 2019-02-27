@@ -10,14 +10,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
  * From apache/commons-collections
  * 
  */
+@DisplayName("Tests for ListUtils")
 public class ListUtilsTest {
 	@Test
+	@DisplayName("Test emptyIfNull")
 	public void testEmptyIfNull() {
 		assertTrue(ListUtils.emptyIfNull(null).isEmpty());
 
@@ -26,6 +29,7 @@ public class ListUtilsTest {
 	}
 
 	@Test
+	@DisplayName("Test defaultIfNull")
 	public void testDefaultIfNull() {
 		assertTrue(ListUtils.defaultIfNull(null, Collections.emptyList()).isEmpty());
 
@@ -34,6 +38,7 @@ public class ListUtilsTest {
 	}
 
 	@Test
+	@DisplayName("Test isEqualList")
 	public void testEquals() {
 		final Collection<String> data = Arrays.asList("a", "b", "c");
 
@@ -50,6 +55,7 @@ public class ListUtilsTest {
 	}
 
 	@Test
+	@DisplayName("Test hashCodeForList")
 	public void testHashCode() {
 		final Collection<String> data = Arrays.asList("a", "b", "c");
 
