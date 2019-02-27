@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +56,7 @@ public class ListUtilsTest {
 	}
 
 	@Test
+	@Disabled
 	@DisplayName("Test hashCodeForList")
 	public void testHashCode() {
 		final Collection<String> data = Arrays.asList("a", "b", "c");
