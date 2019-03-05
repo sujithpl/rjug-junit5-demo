@@ -1,6 +1,7 @@
 package com.sujithpaul.junit5demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +31,7 @@ public class ListUtilsTest {
     private String[] fullArray;
     private List<String> fullList;
 
-    @Before
+    @BeforeEach
     void setUp() {
         fullArray = new String[]{a, b, c, d, e};
         fullList = new ArrayList<String>(Arrays.asList(fullArray));
@@ -41,7 +43,7 @@ public class ListUtilsTest {
     @Test
     void testIntersectNonEmptyWithEmptyList() {
         final List<String> empty = Collections.<String>emptyList();
-        assertTrue("result not empty", ListUtils.intersection(empty, fullList).isEmpty());
+        assertTrue(ListUtils.intersection(empty, fullList).isEmpty(), "result not empty");
     }
 
     /**
@@ -50,7 +52,7 @@ public class ListUtilsTest {
     @Test
     void testIntersectEmptyWithEmptyList() {
         final List<?> empty = Collections.EMPTY_LIST;
-        assertTrue("result not empty", ListUtils.intersection(empty, empty).isEmpty());
+        assertTrue(ListUtils.intersection(empty, empty).isEmpty(), "result not empty");
     }
 
     /**
