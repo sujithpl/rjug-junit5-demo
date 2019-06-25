@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +46,20 @@ public class ListUtilsTest {
 	void testIntersectNonEmptyWithEmptyList() {
 		final List<String> empty = Collections.<String>emptyList();
 		assertTrue(ListUtils.intersection(empty, fullList).isEmpty(), "result not empty");
+	}
+
+	/**
+	 * Tests intersecting a non-empty list with a null list.
+	 */
+	@Test
+	@DisplayName("Tests intersecting a non-empty list with a null list")
+	void testIntersectNonEmptyWithNullList() {
+		try {
+			ListUtils.intersection(fullList, null);
+			fail("NullPointException should be thrown!");
+		} catch (Exception e) {
+			assertEquals(e.getClass(), NullPointerException.class);;
+		}
 	}
 
 	/**
