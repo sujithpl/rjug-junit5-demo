@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -54,12 +55,8 @@ public class ListUtilsTest {
 	@Test
 	@DisplayName("Tests intersecting a non-empty list with a null list")
 	void testIntersectNonEmptyWithNullList() {
-		try {
-			ListUtils.intersection(fullList, null);
-			fail("NullPointException should be thrown!");
-		} catch (Exception e) {
-			assertEquals(e.getClass(), NullPointerException.class);;
-		}
+		assertThrows(NullPointerException.class, () -> ListUtils.intersection(fullList, null),
+				"NullPointException should be thrown!");
 	}
 
 	/**
