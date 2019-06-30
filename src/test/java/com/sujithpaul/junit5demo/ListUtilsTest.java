@@ -193,7 +193,7 @@ public class ListUtilsTest {
 	}
 
 	@Tag("new")
-	@ParameterizedTest
+	@ParameterizedTest(name = "Input {index} ==> Value = ''{0}''")
 	@MethodSource("intProvider")
 	void testMethodParams(int size) {
 		assertTrue(fullList.size() > size);
