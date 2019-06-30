@@ -14,9 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -158,8 +158,7 @@ public class ListUtilsTest {
 				() -> assertEquals(true, ListUtils.isEqualList(null, null)));
 	}
 
-	@Test
-	@Disabled
+	@RepeatedTest(5)
 	@DisplayName("Test hashCodeForList")
 	public void testHashCode() {
 		final Collection<String> data = Arrays.asList("a", "b", "c");
