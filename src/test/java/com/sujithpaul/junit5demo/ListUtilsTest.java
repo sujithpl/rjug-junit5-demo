@@ -176,8 +176,8 @@ public class ListUtilsTest {
 		assertEquals(0, ListUtils.hashCodeForList(null));
 	}
 
+	@New
 	@Test
-	@Tag("new")
 	@Tag("union")
 	@DisplayName("Tests Union")
 	void testUnion() {
