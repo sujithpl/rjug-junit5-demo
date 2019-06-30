@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +16,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -40,82 +40,86 @@ public class ListUtilsTest {
 		fullList = new ArrayList<String>(Arrays.asList(fullArray));
 	}
 
-	/**
-	 * Tests intersecting a non-empty list with an empty list.
-	 */
-	@Test
-	void testIntersectNonEmptyWithEmptyList() {
-		final List<String> empty = Collections.<String>emptyList();
-		assertTrue(ListUtils.intersection(empty, fullList).isEmpty(), "result not empty");
-	}
+	@Nested
+	@DisplayName("Intersection tests")
+	class IntTests {
+		/**
+		 * Tests intersecting a non-empty list with an empty list.
+		 */
+		@Test
+		void testIntersectNonEmptyWithEmptyList() {
+			final List<String> empty = Collections.<String>emptyList();
+			assertTrue(ListUtils.intersection(empty, fullList).isEmpty(), "result not empty");
+		}
 
-	/**
-	 * Tests intersecting a non-empty list with a null list.
-	 */
-	@Test
-	@DisplayName("Tests intersecting a non-empty list with a null list")
-	void testIntersectNonEmptyWithNullList() {
-		assertThrows(NullPointerException.class, () -> ListUtils.intersection(fullList, null),
-				"NullPointException should be thrown!");
-	}
+		/**
+		 * Tests intersecting a non-empty list with a null list.
+		 */
+		@Test
+		@DisplayName("Tests intersecting a non-empty list with a null list")
+		void testIntersectNonEmptyWithNullList() {
+			assertThrows(NullPointerException.class, () -> ListUtils.intersection(fullList, null),
+					"NullPointException should be thrown!");
+		}
 
-	/**
-	 * Tests intersecting a empty list with an empty list.
-	 */
-	@Test
-	void testIntersectEmptyWithEmptyList() {
-		final List<?> empty = Collections.EMPTY_LIST;
-		assertTrue(ListUtils.intersection(empty, empty).isEmpty(), "result not empty");
-	}
+		/**
+		 * Tests intersecting a empty list with an empty list.
+		 */
+		@Test
+		void testIntersectEmptyWithEmptyList() {
+			final List<?> empty = Collections.EMPTY_LIST;
+			assertTrue(ListUtils.intersection(empty, empty).isEmpty(), "result not empty");
+		}
 
-	/**
-	 * Tests intersecting a non-empty list with an subset of itself.
-	 */
-	@Test
-	void testIntersectNonEmptySubset() {
-		// create a copy
-		final List<String> other = new ArrayList<String>(fullList);
+		/**
+		 * Tests intersecting a non-empty list with an subset of itself.
+		 */
+		@Test
+		void testIntersectNonEmptySubset() {
+			// create a copy
+			final List<String> other = new ArrayList<String>(fullList);
 
-		// remove a few items
-		assertNotNull(other.remove(0));
-		assertNotNull(other.remove(1));
+			// remove a few items
+			assertNotNull(other.remove(0));
+			assertNotNull(other.remove(1));
 
-		// make sure the intersection is equal to the copy
-		assertEquals(other, ListUtils.intersection(fullList, other));
-	}
+			// make sure the intersection is equal to the copy
+			assertEquals(other, ListUtils.intersection(fullList, other));
+		}
 
-	/**
-	 * Tests intersecting a non-empty list with a list of different types.
-	 */
-	@Test
-	void testIntersectListWithNoOverlapAndDifferentTypes() {
-		@SuppressWarnings("boxing")
-		final List<Integer> other = Arrays.asList(1, 23);
-		assertTrue(ListUtils.intersection(fullList, other).isEmpty());
-	}
+		/**
+		 * Tests intersecting a non-empty list with a list of different types.
+		 */
+		@Test
+		void testIntersectListWithNoOverlapAndDifferentTypes() {
+			@SuppressWarnings("boxing")
+			final List<Integer> other = Arrays.asList(1, 23);
+			assertTrue(ListUtils.intersection(fullList, other).isEmpty());
+		}
 
-	/**
-	 * Tests intersecting a non-empty list with itself.
-	 */
-	@Test
-	void testIntersectListWithSelf() {
-		assertEquals(fullList, ListUtils.intersection(fullList, fullList));
-	}
+		/**
+		 * Tests intersecting a non-empty list with itself.
+		 */
+		@Test
+		void testIntersectListWithSelf() {
+			assertEquals(fullList, ListUtils.intersection(fullList, fullList));
+		}
 
-	/**
-	 * Tests intersecting two lists in different orders.
-	 */
-	@Test
-	void testIntersectionOrderInsensitivity() {
-		final List<String> one = new ArrayList<String>();
-		final List<String> two = new ArrayList<String>();
-		one.add("a");
-		one.add("b");
-		two.add("a");
-		two.add("a");
-		two.add("b");
-		two.add("b");
-		assertEquals(ListUtils.intersection(one, two), ListUtils.intersection(two, one));
+		/**
+		 * Tests intersecting two lists in different orders.
+		 */
+		@Test
+		void testIntersectionOrderInsensitivity() {
+			final List<String> one = new ArrayList<String>();
+			final List<String> two = new ArrayList<String>();
+			one.add("a");
+			one.add("b");
+			two.add("a");
+			two.add("a");
+			two.add("b");
+			two.add("b");
+			assertEquals(ListUtils.intersection(one, two), ListUtils.intersection(two, one));
+		}
 	}
 
 	@Test
