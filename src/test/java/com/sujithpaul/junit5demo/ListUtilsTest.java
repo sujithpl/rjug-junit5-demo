@@ -19,6 +19,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * From apache/commons-collections
@@ -179,6 +181,13 @@ public class ListUtilsTest {
 	@DisplayName("Tests Union")
 	void testUnion() {
 		assertEquals(10, ListUtils.union(fullList, fullList).size());
+	}
+
+	@Tag("new")
+	@ParameterizedTest
+	@ValueSource(ints = { 0, 1, 2, 3, 4 })
+	void testValueParams(int size) {
+		assertTrue(fullList.size() > size);
 	}
 
 }
