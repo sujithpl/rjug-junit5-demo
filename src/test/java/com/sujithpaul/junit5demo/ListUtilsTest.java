@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -174,4 +175,13 @@ public class ListUtilsTest {
 		assertEquals(false, ListUtils.hashCodeForList(a) == ListUtils.hashCodeForList(b));
 		assertEquals(0, ListUtils.hashCodeForList(null));
 	}
+
+	@Test
+	@Tag("new")
+	@Tag("union")
+	@DisplayName("Tests Union")
+	void testUnion() {
+		assertEquals(10, ListUtils.union(fullList, fullList).size());
+	}
+
 }
