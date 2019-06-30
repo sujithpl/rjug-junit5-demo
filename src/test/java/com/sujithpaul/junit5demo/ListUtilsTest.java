@@ -158,8 +158,7 @@ public class ListUtilsTest {
 				() -> assertEquals(true, ListUtils.isEqualList(null, null)));
 	}
 
-	@RepeatedTest(5)
-	@DisplayName("Test hashCodeForList")
+	@RepeatedTest(value = 5, name = "Test hashCodeForList: {currentRepetition} of {totalRepetitions}")
 	public void testHashCode() {
 		final Collection<String> data = Arrays.asList("a", "b", "c");
 
