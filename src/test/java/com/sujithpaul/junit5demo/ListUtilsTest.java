@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
@@ -188,6 +190,17 @@ public class ListUtilsTest {
 	@ValueSource(ints = { 0, 1, 2, 3, 4 })
 	void testValueParams(int size) {
 		assertTrue(fullList.size() > size);
+	}
+
+	@Tag("new")
+	@ParameterizedTest
+	@MethodSource("intProvider")
+	void testMethodParams(int size) {
+		assertTrue(fullList.size() > size);
+	}
+
+	static IntStream intProvider() {
+		return IntStream.range(0, 5);
 	}
 
 }
